@@ -5,7 +5,7 @@ addons:
   postgresql: 9.6
 before_install:
 - gem install bundler -v 2.1.4
-- gem install node -v 8.12.0
+- nvm install node 
 - bundle
 script:
 - bundle exec rails db:{create,migrate} RAILS_ENV=test
