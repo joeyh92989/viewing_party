@@ -19,37 +19,37 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'figaro'
 gem 'bootstrap'
 gem 'autoprefixer-rails', '10.2.5.0'
+gem 'rubocop-rails'
+gem 'rubocop-rspec'
+gem 'faraday'
+gem 'json'
+gem 'sinatra'
+gem 'standard'
 
 group :development, :test do
   gem 'pry'
   gem 'travis'
-  gem 'rspec-rails'
   gem 'capybara'
   gem 'launchy'
   gem 'simplecov'
   gem 'orderly'
   gem 'nyan-cat-formatter'
   gem 'shoulda-matchers'
+  gem 'faraday'
+  gem 'json'
+  gem 'sinatra'
 end
 
 group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
-  gem 'rubocop-rails'
+
 end
 
 group :test do
   gem 'webmock'
   gem 'vcr'
-#   gem 'rspec-rails'
-#   gem 'capybara'
-#   gem 'launchy'
-#   gem 'simplecov'
-#   gem 'orderly'
 end
 
-gem 'faraday'
-gem 'json'
-gem 'sinatra'
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
