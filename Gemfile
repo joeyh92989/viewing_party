@@ -35,9 +35,9 @@ group :development, :test do
   gem 'orderly'
   gem 'nyan-cat-formatter'
   gem 'shoulda-matchers'
-  gem 'faraday'
   gem 'json'
   gem 'sinatra'
+  gem 'rspec-rails'
 end
 
 group :development do
