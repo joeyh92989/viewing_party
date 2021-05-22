@@ -5,40 +5,40 @@
 <%= image_tag "http://image.tmdb.org/t/p/w500/#{@movie_details.poster_path}", :class => 'poster-class' %>
 <ul>
   <li> Title: <%="#{@movie_details.title}"%>
-    <li> Vote Average: <%="#{@movie_details.vote_average}"%>
-      <li> Run Time: <%="#{time_conversion(@movie_details.runtime)}"%>
-        <li>Plot Summary: <%="#{@movie_details.overview}"%>
-          <li>Genres: <% @movie_details.genres.each do |genre|%> <%= genre[:name]%>, <%end%>
-          </ul>
-          <h3>Cast</h3>
-          <ul>
-            <% @movie_cast.each do |cast| %>
-              <li> Character: <%="#{cast.character}"%> Actor/Actress: <%=cast.name%>
-              <% end %>
-            </ul>
-            <h3> Reviews</h3>
-            <p> Total Reviews: <%="#{@movie_reviews.count}"%>
-              <ul>
-                <% @movie_reviews.each do |review| %>
-                  <li> Reviewer: <%="#{review.author}"%> Rating: <%=review.rating%>
-                  <% end %>
-                </ul>
-                <h3>Where to Watch</h3>
-                <h4>Buy</h4>
-                <% @providers[0].each do |buy_provider| %>
-                  <div id="buy-provider">
-                    <li> Provider: <%=buy_provider.provider_name%>
-                    </div>
-                  <% end %>
-                  <h4>Rent</h4>
-                  <% @providers[1].each do |rent_provider| %>
-                    <div id="rent-provider">
-                      <li> Provider: <%=rent_provider.provider_name%>
-                      </div>
-                    <% end %>
-                    <h4>Stream</h4>
-                    <% @providers[2].each do |stream_provider| %>
-                      <div id="stream-provider">
-                        <li> Provider: <%=stream_provider.provider_name%>
-                        </div>
-                      <% end %>
+    <li> Vote Average: <%="#{@movie_details.vote_average}"%></li>
+    <li> Run Time: <%="#{time_conversion(@movie_details.runtime)}"%></li>
+    <li>Plot Summary: <%="#{@movie_details.overview}"%></li>
+    <li>Genres: <% @movie_details.genres.each do |genre|%> <%= genre[:name]%>, <%end%></li>
+  </ul>
+  <h3>Cast</h3>
+  <ul>
+    <% @movie_cast.each do |cast| %>
+      <li> Character: <%="#{cast.character}"%> Actor/Actress: <%=cast.name%></li>
+    <% end %>
+  </ul>
+  <h3> Reviews</h3>
+  <p> Total Reviews: <%="#{@movie_reviews.count}"%>
+    <ul>
+      <% @movie_reviews.each do |review| %>
+        <li> Reviewer: <%="#{review.author}"%> Rating: <%=review.rating%></li>
+      <% end %>
+    </ul>
+    <h3>Where to Watch</h3>
+    <h4>Buy</h4>
+    <% @providers[0].each do |buy_provider| %>
+      <div id="buy-provider">
+        <li> Provider: <%=buy_provider.provider_name%></li>
+      </div>
+    <% end %>
+    <h4>Rent</h4>
+    <% @providers[1].each do |rent_provider| %>
+      <div id="rent-provider">
+        <li> Provider: <%=rent_provider.provider_name%></li>
+      </div>
+    <% end %>
+    <h4>Stream</h4>
+    <% @providers[2].each do |stream_provider| %>
+      <div id="stream-provider">
+        <li> Provider: <%=stream_provider.provider_name%></li>
+      </div>
+    <% end %>
