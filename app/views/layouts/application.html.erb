@@ -1,50 +1,46 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-  <title>ViewingParty</title>
-  <%= csrf_meta_tags %>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
-</head>
-<% if current_user %>
-<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgb(143, 79, 130);">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Viewing Party</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-link" href="/logout" data-method="delete">Log Out</a>
-        <a class="nav-link" href=<%="#{dashboard_path}"%>>Dashboard</a>
-        <a class="nav-link" href=<%="#{discover_path}"%>>Discover Movies</a>
+  <head>
+    <title>ViewingParty</title>
+    <%= csrf_meta_tags %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+  </head>
+  <% if current_user %>
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgb(143, 79, 130);">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Viewing Party</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link" href="/logout" data-method="delete">Log Out</a>
+            <a class="nav-link" href=<%="#{dashboard_path}"%>>Dashboard</a>
+            <a class="nav-link" href=<%="#{discover_path}"%>>Discover Movies</a>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</nav>
-<%end%>
-
-
-<body>
-  <main class="mainbody">
-    <% flash.each do |name, msg| %>
-    <%= content_tag :div, msg, class: name %>
-    <% end %>
-    <%= yield %>
-  </main>
-  <footer>
-    <img src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg" alt="The MovieDB Logo" width="75px" style="margin:10px">
-    <div>
-      <p>
-        Thank you to <a href="https://www.themoviedb.org/about/logos-attribution">The MovieDB</a> for providing the movie data that is used in this application.
-      </p>
-      <p>
-        Further citation information regarding the movie data used in this project can be found <a href="http://files.grouplens.org/datasets/movielens/ml-latest-small-README.html">here.</a>
-      </p>
-    </div>
-  </footer>
-</body>
-
+    </nav>
+  <%end%>
+  <body>
+    <main class="mainbody">
+      <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, class: name %>
+      <% end %>
+      <%= yield %>
+    </main>
+    <footer>
+      <img src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg" alt="The MovieDB Logo" width="75px" style="margin:10px">
+      <div>
+        <p>
+          Thank you to <a href="https://www.themoviedb.org/about/logos-attribution">The MovieDB</a> for providing the movie data that is used in this application.
+        </p>
+        <p>
+          Further citation information regarding the movie data used in this project can be found <a href="http://files.grouplens.org/datasets/movielens/ml-latest-small-README.html">here.</a>
+        </p>
+      </div>
+    </footer>
+  </body>
 </html>
