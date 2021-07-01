@@ -3,7 +3,7 @@ version: 2.1
 executors:
   ruby:
     docker:
-      - image: circleci/ruby
+      - image: circleci/ruby 5.2.3
 
 jobs:
   test:
