@@ -12,12 +12,12 @@ jobs:
         environment:
           POSTGRES_USER: viewing_party
           POSTGRES_DB: viewing_party_test
-          POSTGRES_PASSWORD: ""
+          # POSTGRES_PASSWORD: ""
     steps:
       - checkout
 
       #install bundler
-      - run: gem install bundler 2.1.4
+      - run: gem install bundler
       # Bundle install dependencies
       - run: bundle install --path vendor/bundle
 
