@@ -1,34 +1,33 @@
 version: 2.1
-jobs:
-  build:
-    working_directory: ~/viewing_party
+
+executors:
+  ruby:
     docker:
-      - image: circleci/ruby:2.5.3
-        environment:
-          PGHOST: localhost
-          PGUSER: viewing_party
-          RAILS_ENV: test
-      - image: postgres:9.5
-        environment:
-          POSTGRES_USER: viewing_party
-          POSTGRES_DB: viewing_party_test
-          POSTGRES_PASSWORD: ""
+      - image: circleci/ruby
+
+jobs:
+  test:
+    executor: ruby
     steps:
       - checkout
+      - run: gem install rspec
+      - run: rspec --failure-exit-code=0
+      - persist_to_workspace:
+          root: .
+          paths:
+            - '*'
 
-      #install bundler
-      - run: gem install bundler
-      # Bundle install dependencies
-      - run: bundle install --path vendor/bundle
+  test_again:
+    executor: ruby
+    steps:
+      - attach_workspace:
+          at: ~/project
+      - run: gem install rspec
+      - run: rspec --only-failures
 
-      # Wait for DB
-      - run: dockerize -wait tcp://localhost:5432 -timeout 1m
-
-      # Setup the environment
-      - run: cp .sample.env .env
-
-      # Setup the database
-      - run: bundle exec rake db:setup
-
-      # Run the tests
-      - run: bundle exec rspec
+workflows:
+  test:
+    jobs:
+      - test
+      - test_again:
+          requires: [test]
