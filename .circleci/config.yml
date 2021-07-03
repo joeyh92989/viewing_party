@@ -2,22 +2,22 @@ version: 2.1
 
 executors:
   default:
-    working_directory: ~/hix_postgresql
+    working_directory: ~/viewing_party
     docker:
       - image: circleci/ruby:2.5.3
         environment:
           BUNDLE_JOBS: 3
           BUNDLE_PATH: vendor/bundle
           BUNDLE_RETRY: 3
-          BUNDLER_VERSION: 2.0.1
+          BUNDLER_VERSION: 2.1.4
           RAILS_ENV: test
           DB_HOST: 127.0.0.1
           PG_HOST: 127.0.0.1
-          PGUSER: hixonrails
-      - image: circleci/postgres:12.0
+          PGUSER: joeyh92989
+      - image: circleci/postgres:13.2
         environment:
-          POSTGRES_DB: hix_postgresql_test
-          POSTGRES_USER: hixonrails
+          POSTGRES_DB: viewing_party_test
+          POSTGRES_USER: joeyh92989
 
 commands:
   configure_bundler:
@@ -37,8 +37,8 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - hix_postgresql-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
-            - hix_postgresql-
+            - viewing_party-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+            - viewing_party-
       - configure_bundler
       - run:
           name: Install bundle
@@ -50,13 +50,13 @@ jobs:
           name: Setup DB
           command: bundle exec rails db:create
       - save_cache:
-          key: hix_postgresql-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+          key: viewing_party-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
       - persist_to_workspace:
           root: ~/
           paths:
-            - ./hix_postgresql
+            - ./viewing_party
 
 workflows:
   version: 2
