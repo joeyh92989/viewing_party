@@ -13,11 +13,12 @@ executors:
           RAILS_ENV: test
           DB_HOST: 127.0.0.1
           PG_HOST: 127.0.0.1
-          PGUSER: hixonrails
+          PGUSER: joeyh92989
       - image: circleci/postgres:13.2
         environment:
           POSTGRES_DB: viewing_party_test
-          POSTGRES_USER: hixonrails
+          POSTGRES_USER: joeyh92989
+          POSTGRES_HOST_AUTH_METHOD: trust
 
 commands:
   configure_bundler:
